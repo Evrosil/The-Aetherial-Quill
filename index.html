@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Aetherial Quill</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Pinyon+Script&display=swap" rel="stylesheet">
+    <style>
+      /* Custom Scrollbar for that vintage feel */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #F5E6D3; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #8B4513; 
+        border-radius: 4px;
+      }
+      body {
+        background-color: #1a1510;
+        background-image: url("https://www.transparenttextures.com/patterns/dark-leather.png");
+      }
+    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              parchment: '#F5E6D3',
+              'parchment-dark': '#E6D2B5',
+              ink: '#2C1810',
+              gold: '#DAA520',
+              burgundy: '#5D0000',
+              'burgundy-light': '#8B0000',
+            },
+            fontFamily: {
+              header: ['Cinzel', 'serif'],
+              body: ['Cormorant Garamond', 'serif'],
+              script: ['Pinyon Script', 'cursive'],
+            },
+            boxShadow: {
+              'paper': '0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.15)',
+              'inner-glow': 'inset 0 0 20px rgba(139, 69, 19, 0.1)',
+            }
+          }
+        }
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
