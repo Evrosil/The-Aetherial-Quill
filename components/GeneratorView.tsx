@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { MemoryItem, LoadingState, AppLanguage, VocabItem, TextbookItem } from '../types';
 import { QuillButton, ParchmentTextArea, SectionHeader, LanguageSelector } from './UIComponents';
 import { generateFictionStory, analyzeStoryForLearning } from '../services/geminiService';
-import { Send, Loader2, Feather, BookOpen, Info, GraduationCap } from 'lucide-react';
+import { Send, Loader2, Feather, BookOpen, Info, GraduationCap, Download, Share2 } from 'lucide-react';
 import { translations } from '../utils/translations';
 
 interface GeneratorViewProps {
@@ -59,6 +59,44 @@ export const GeneratorView: React.FC<GeneratorViewProps> = ({ memoryItems, appLa
       addedAt: Date.now()
     });
     alert("Added to Lexicon"); // Simple feedback
+  };
+
+  const handleSave = () => {
+    if (!result) return;
+    const textContent = `${result.title}\n\n${result.content}`;
+    const blob = new Blob([textContent], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${result.title.replace(/\s+/g, '_')}.txt`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
+  const handleShare = async () => {
+    if (!result) return;
+    const textContent = `${result.title}\n\n${result.content}`;
+    
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: result.title,
+          text: textContent,
+        });
+      } catch (err) {
+        // User cancelled or failed, fallback to clipboard
+        console.log('Share cancelled');
+      }
+    } else {
+      try {
+        await navigator.clipboard.writeText(textContent);
+        alert(t.shareSuccess);
+      } catch (err) {
+        alert(t.shareFail);
+      }
+    }
   };
 
   // Helper to render text with highlights
@@ -244,8 +282,18 @@ export const GeneratorView: React.FC<GeneratorViewProps> = ({ memoryItems, appLa
                   {renderContent()}
                 </div>
 
-                <div className="text-center mt-12 text-ink/40 font-script text-2xl">
+                <div className="text-center mt-12 text-ink/40 font-script text-2xl mb-8">
                   {t.finis}
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex justify-center gap-4 pt-4 border-t border-ink/10">
+                  <QuillButton variant="secondary" onClick={handleSave} className="flex items-center gap-2 text-sm">
+                    <Download className="w-4 h-4" /> {t.saveBtn}
+                  </QuillButton>
+                  <QuillButton variant="secondary" onClick={handleShare} className="flex items-center gap-2 text-sm">
+                    <Share2 className="w-4 h-4" /> {t.shareBtn}
+                  </QuillButton>
                 </div>
               </div>
           </div>

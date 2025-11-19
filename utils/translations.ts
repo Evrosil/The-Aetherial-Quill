@@ -38,7 +38,12 @@ type TranslationKey =
   | 'deleteConfirmTitle'
   | 'deleteConfirmMessage'
   | 'confirm'
-  | 'cancel';
+  | 'cancel'
+  // Save & Share
+  | 'saveBtn'
+  | 'shareBtn'
+  | 'shareSuccess'
+  | 'shareFail';
 
 export const translations: Record<AppLanguage, Record<TranslationKey, string>> = {
   en: {
@@ -78,7 +83,12 @@ export const translations: Record<AppLanguage, Record<TranslationKey, string>> =
     deleteConfirmTitle: "Burn this Entry?",
     deleteConfirmMessage: "Are you certain you wish to scrub this from the archives? This action cannot be undone.",
     confirm: "Burn It",
-    cancel: "Keep It"
+    cancel: "Keep It",
+    // Save & Share
+    saveBtn: "Save Scripture",
+    shareBtn: "Share Tale",
+    shareSuccess: "Copied to clipboard!",
+    shareFail: "Could not share."
   },
   zh: {
     appTitle: "以太羽毛笔",
@@ -117,7 +127,12 @@ export const translations: Record<AppLanguage, Record<TranslationKey, string>> =
     deleteConfirmTitle: "销毁此条目？",
     deleteConfirmMessage: "您确定要从档案馆中抹去此记录吗？此操作无法撤销。",
     confirm: "销毁",
-    cancel: "保留"
+    cancel: "保留",
+    // Save & Share
+    saveBtn: "保存篇章",
+    shareBtn: "分享故事",
+    shareSuccess: "已复制到剪贴板！",
+    shareFail: "分享失败。"
   },
   de: {
     appTitle: "Die Ätherische Feder",
@@ -156,7 +171,12 @@ export const translations: Record<AppLanguage, Record<TranslationKey, string>> =
     deleteConfirmTitle: "Eintrag verbrennen?",
     deleteConfirmMessage: "Sind Sie sicher, dass Sie dies aus den Archiven löschen möchten? Dies kann nicht rückgängig gemacht werden.",
     confirm: "Verbrennen",
-    cancel: "Behalten"
+    cancel: "Behalten",
+    // Save & Share
+    saveBtn: "Schrift speichern",
+    shareBtn: "Teilen",
+    shareSuccess: "In die Zwischenablage kopiert!",
+    shareFail: "Konnte nicht teilen."
   },
   es: {
     appTitle: "La Pluma Etérea",
@@ -195,6 +215,11 @@ export const translations: Record<AppLanguage, Record<TranslationKey, string>> =
     deleteConfirmTitle: "¿Quemar esta entrada?",
     deleteConfirmMessage: "¿Estás seguro de que deseas borrar esto de los archivos? Esta acción no se puede deshacer.",
     confirm: "Quemar",
-    cancel: "Mantener"
+    cancel: "Mantener",
+    // Save & Share
+    saveBtn: "Guardar Escritura",
+    shareBtn: "Compartir",
+    shareSuccess: "¡Copiado al portapapeles!",
+    shareFail: "No se pudo compartir."
   }
 };

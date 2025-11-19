@@ -89,13 +89,13 @@ export const Flashcard: React.FC<{ item: VocabItem; uiLang: AppLanguage }> = ({ 
 
   return (
     <div 
-      className="perspective-1000 w-full h-64 cursor-pointer group"
+      className="group w-full h-64 cursor-pointer [perspective:1000px]"
       onClick={() => setFlipped(!flipped)}
     >
-      <div className={`relative w-full h-full transition-transform duration-700 transform-style-3d ${flipped ? 'rotate-y-180' : ''}`}>
+      <div className={`relative w-full h-full transition-all duration-700 [transform-style:preserve-3d] ${flipped ? '[transform:rotateY(180deg)]' : ''}`}>
         
         {/* Front */}
-        <div className="absolute w-full h-full backface-hidden">
+        <div className="absolute inset-0 [backface-visibility:hidden]">
           <Card className="h-full flex flex-col items-center justify-center text-center bg-parchment hover:bg-parchment-dark/10 transition-colors">
             <h3 className="font-header text-3xl text-ink mb-2">{item.word}</h3>
             <span className="font-body italic text-burgundy/60">{item.partOfSpeech}</span>
@@ -106,7 +106,7 @@ export const Flashcard: React.FC<{ item: VocabItem; uiLang: AppLanguage }> = ({ 
         </div>
 
         {/* Back */}
-        <div className="absolute w-full h-full backface-hidden rotate-y-180">
+        <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)]">
           <Card className="h-full flex flex-col items-center justify-center text-center bg-[#1a1510] text-parchment border-gold">
              <p className="font-header text-2xl text-gold mb-4">{item.translation}</p>
              <p className="font-body text-lg text-parchment/80 px-4">{item.definition}</p>
